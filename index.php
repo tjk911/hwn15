@@ -5,10 +5,24 @@
     <div class="row">
       <div class="large-12 columns head-wrap">
         <h2 style="margin-bottom:0.25rem; font-size:2em;">Your guide to Halloween in lohud</h2>
-        <!-- <p style="margin-bottom:0.25rem; margin-top:0.25rem;">BOO. Scary Brief Here</p> -->
+        <div style="padding: 5px 20px 0;">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://data.lohud.com/features/halloween15" data-text="Halloween Guide" data-via="lohud" >Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+          <div class="fb-like" data-href="http://data.lohud.com/features/halloween15" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>
       </div>
     </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
+    </h2>
 <!--     <div class="row">
       <div class="large-12 columns">
         <hr style="border:2px solid; margin:0.5rem 0 0.5rem 0;">
@@ -32,9 +46,6 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
-
-
               </div>
                 
               <div style="background-color:#ececec; padding:10px;"></div>
@@ -58,9 +69,6 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
-
-
               </div>
                 
               <div style="background-color:#ececec; padding:10px;"></div>
@@ -84,9 +92,6 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
-
-
               </div>
                 
               <div style="background-color:#ececec; padding:10px;"></div>
@@ -109,9 +114,6 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
-
-
               </div>
                 
               <div style="background-color:#ececec; padding:10px;"></div>
@@ -134,9 +136,6 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
-
-
               </div>
                 
               <div style="background-color:#ececec; padding:10px;"></div>
@@ -164,11 +163,8 @@
 
             $.getJSON('entries.json', function(data){
                   myItems = data;
-                  // console.log(data);
-                  // var news = document.getElementsByClassName("news")[0];
                   for(var s = 0; s < data.length; s++) {    if (data[s]['profileid']=='Family-friendly frights'){
                       var ffr = document.createElement("div");
-                      // ffr.setAttribute("id", "ffr");
                       ffr.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -188,8 +184,6 @@
                       document.getElementById("ffr").appendChild(ffr)
                     } else if (data[s]['profileid']=='Serious scares'){
                       var ss = document.createElement("div");
-                      // ss.setAttribute("id", "ss");
-                      // ss.style.cssText ='display:none';
                       ss.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -209,8 +203,6 @@
                       document.getElementById("ss").appendChild(ss)
                     } else if (data[s]['profileid']=='Nonfiction fear'){
                       var nfr = document.createElement("div");
-                      // nfr.setAttribute("id", "nfr");
-                      // nfr.style.cssText ='display:none';
                       nfr.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -230,8 +222,6 @@
                       document.getElementById("nfr").appendChild(nfr)
                     } else if (data[s]['profileid']=='Screams on stage and screen'){
                       var sosas = document.createElement("div");
-                      // sosas.setAttribute("id", "sosas");
-                      // sosas.style.cssText ='display:none';
                       sosas.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
