@@ -32,6 +32,7 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
+                <select id="keywords" multiple="multiple"></select>
 
 
 
@@ -58,6 +59,7 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
+                <select id="keywords" multiple="multiple"></select>
 
 
 
@@ -84,7 +86,7 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
-
+                <select id="keywords" multiple="multiple"></select>
 
 
               </div>
@@ -109,6 +111,7 @@
 
               <div style="padding:20px; box-sizing:border-box;">
                 <p>With spooky cemeteries and blazing pumpkin fests, The Lower Hudson Valley is Halloween central. Find an event that suits your fear factor here:  </p>
+                <select id="keywords" multiple="multiple"></select>
 
 
 
@@ -162,13 +165,50 @@
         
         <script type="text/javascript">
 
+            var eventindex = {},
+            myItems;
+
             $.getJSON('entries.json', function(data){
                   myItems = data;
-                  // console.log(data);
-                  // var news = document.getElementsByClassName("news")[0];
+
+                  for (var i=0, f=data.length; i < f; i++){
+                    if (!(data[i].profileid in eventindex)){
+                      eventindex[data[i].profileid] = [];
+                    }
+
+                    if (!(data[i].lat in eventindex)){
+                      eventindex[data[i].lat] = [];
+                    }
+                    eventindex[data[i].profileid].push(i);
+                    eventindex[data[i].lat].push(i);
+                  }
+
+                  console.log(eventindex);
+
+                  for (var keyword in eventindex){
+                    var link = '<option class="event-link">'+keyword+'</option>';
+                    $('#keywords').append(link);
+                  }
+
+                  $('select').select2({
+                    placeholder: "Type in your location"
+                  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   for(var s = 0; s < data.length; s++) {    if (data[s]['profileid']=='Family-friendly frights'){
                       var ffr = document.createElement("div");
-                      // ffr.setAttribute("id", "ffr");
                       ffr.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -188,8 +228,6 @@
                       document.getElementById("ffr").appendChild(ffr)
                     } else if (data[s]['profileid']=='Serious scares'){
                       var ss = document.createElement("div");
-                      // ss.setAttribute("id", "ss");
-                      // ss.style.cssText ='display:none';
                       ss.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -209,8 +247,6 @@
                       document.getElementById("ss").appendChild(ss)
                     } else if (data[s]['profileid']=='Nonfiction fear'){
                       var nfr = document.createElement("div");
-                      // nfr.setAttribute("id", "nfr");
-                      // nfr.style.cssText ='display:none';
                       nfr.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
@@ -230,8 +266,6 @@
                       document.getElementById("nfr").appendChild(nfr)
                     } else if (data[s]['profileid']=='Screams on stage and screen'){
                       var sosas = document.createElement("div");
-                      // sosas.setAttribute("id", "sosas");
-                      // sosas.style.cssText ='display:none';
                       sosas.innerHTML = 
                       "<div class='row'> \
                         <div style='box-sizing:border-box;'> \
