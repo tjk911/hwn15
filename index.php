@@ -167,51 +167,48 @@
         
         <script type="text/javascript">
 
-            var eventindex = {},
-            myItems;
+            var roadindex = {},
+            roaddata;
 
             $.getJSON('entries.json', function(data){
-                  myItems = data;
+            roaddata = data;
+            
+            //Create a new object to hold index position of cameras per roadway
+            for (var i=0, f=data.length;i<f;i++){
+                if (!(data[i].profileid in roadindex)){
+                    roadindex[data[i].profileid] = [];
+                }
+                roadindex[data[i].profileid].push(i);                
+            }
 
-                  for (var i=0, f=data.length; i < f; i++){
-                    if (!(data[i].profileid in eventindex)){
-                      eventindex[data[i].profileid] = [];
-                    }
+            // console.log(roadindex);
+            
+            
+            //Build a link list of unique roadways
+            for (var roadway in roadindex){
+                var link = '<option class="roadway-link">'+roadway+'</option>';
+                $('#keywords').append(link);
+            }
+            $('select').select2({
+                placeholder: "Type or select roadways"
+            });
+        })
+        
+        console.log(roaddata)
 
-                    // if (!(data[i].lat in eventindex)){
-                    //   eventindex[data[i].lat] = [];
-                    // }
-                    eventindex[data[i].profileid].push(i);
-                    // eventindex[data[i].lat].push(i);
-                  }
-
-                  // console.log(eventindex);
-
-                  for (var keyword in eventindex){
-                    var link = '<option class="event-link">'+keyword+'</option>';
-                    $('#keywords').append(link);
-                  }
-
-                  $('select').select2({
-                    placeholder: "Type in your location"
-                  });
-              })
-
-            console.log(myItems);
-
-
-              $('#keywords').change(function(){ 
-                 var eventindex = $(this).val();
-                 
-
-                 $('#events').empty();
-                 for (var i=0, f=myItems.length; i<f;i++){
-                     if (eventindex.indexOf(myItems[i].profileid) > -1){
-                         console.log(myItems[i].Name);
-                         $('#events').append("<div class='row'><div style='box-sizing:border-box;'><div class='large-3 columns' style='padding-top:10px;'>"+ ( myItems[s].url !== "" ? "<img src='uploads/"+myItems[s].url+"'>" : "<img src='uploads/ffr.jpg'>" )+ "</div><div class='large-9 columns'><h2 style='margin: 0rem'>"+myItems[s].Name+"</h2>"+ ( myItems[s].city !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+myItems[s].city+"</h4>" : "" )+ "<p>"+myItems[s].desc+"</p>"+ ( myItems[s].address !== "" ?  "<p><b>Phone:</b> "+myItems[s].address+"</p>" : "" )+ "<p><a href='"+myItems[s].bizurl+"'>"+myItems[s].bizurl+"</a></p></div></div></div>");
-                     }
-                 }
-              });
+        $('#keywords').change(function(){ 
+           var roadindex = $(this).val();
+           
+           $('#events').empty();
+           for (var i=0, f=roaddata.length; i<f;i++){
+               if (roadindex.indexOf(roaddata[i].profileid) > -1){
+                   console.log(roaddata[i].url);
+                   var list;
+                   list.innerHTML='<div class="row"><div style="padding:20px; box-sizing:border-box;"><div class="large-4 columns"><img src="'+roaddata[s]["url"]+'"></div><div class="large-8 columns"><h2 style="margin: 0rem">'+roaddata[s]["name"]+'</h2>'+ ( roaddata[s]["city"] !== '' ? '<h4>Dates: '+roaddata[s]["city"]+'</h4>' : '' )+ '<p>'+roaddata[s]["desc"]+'</p><p><b>Go:</b> '+roaddata[s]["address"]+'</p><p><a href="'+roaddata[s]["bizurl"]+'">'+roaddata[s]["bizurl"]+'</a></p></div></div></div>';
+                   $('#events').append(list);
+               }
+           }
+        });
 
         </script>
     </div>
