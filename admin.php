@@ -88,7 +88,7 @@ if(!empty($_POST)){
         <thead>
           <tr>
             <th>profileid</th>
-            <th>name</th>
+            <th>Name</th>
             <th>city</th>
             <th>address</th>
             <th>bizurl</th>
@@ -107,7 +107,7 @@ if(!empty($_POST)){
             for ($i = 0; $i < count($decode); $i++){
               echo "<tr class='marker'>
                       <td contenteditable='true'>".$decode[$i]['profileid']."</td>
-                      <td contenteditable='true'>".$decode[$i]['name']."</td>
+                      <td contenteditable='true'>".$decode[$i]['Name']."</td>
                       <td contenteditable='true'>".$decode[$i]['city']."</td>
                       <td contenteditable='true'>".$decode[$i]['address']."</td>
                       <td contenteditable='true'>".$decode[$i]['bizurl']."</td>

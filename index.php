@@ -178,14 +178,14 @@
                       eventindex[data[i].profileid] = [];
                     }
 
-                    if (!(data[i].lat in eventindex)){
-                      eventindex[data[i].lat] = [];
-                    }
+                    // if (!(data[i].lat in eventindex)){
+                    //   eventindex[data[i].lat] = [];
+                    // }
                     eventindex[data[i].profileid].push(i);
-                    eventindex[data[i].lat].push(i);
+                    // eventindex[data[i].lat].push(i);
                   }
 
-                  console.log(eventindex);
+                  // console.log(eventindex);
 
                   for (var keyword in eventindex){
                     var link = '<option class="event-link">'+keyword+'</option>';
@@ -195,110 +195,23 @@
                   $('select').select2({
                     placeholder: "Type in your location"
                   });
-
-
-                  $('#keywords').change(function(){ 
-                     var eventindex = $(this).val();
-                      // console.log(eventindex)
-                     
-                     $('#events').empty();
-                     for (var i=0, f=myItems.length; i<f;i++){
-                         if (eventindex.indexOf(myItems[i].profileid) > -1){
-                             console.log(myItems[i].name);
-                             $('#events').append("<div class='row'><div style='box-sizing:border-box;'><div class='large-3 columns' style='padding-top:10px;'>"+ ( myItems[s].url !== "" ? "<img src='uploads/"+myItems[s].url+"'>" : "<img src='uploads/ffr.jpg'>" )+ "</div><div class='large-9 columns'><h2 style='margin: 0rem'>"+myItems[s].name+"</h2>"+ ( myItems[s].city !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+myItems[s].city+"</h4>" : "" )+ "<p>"+myItems[s].desc+"</p>"+ ( myItems[s].address !== "" ?  "<p><b>Phone:</b> "+myItems[s].address+"</p>" : "" )+ "<p><a href='"+myItems[s].bizurl+"'>"+myItems[s].bizurl+"</a></p></div></div></div>");
-                         }
-                     }
-                  });
-
-
-
-
-
-
-
-
-
-
-
-                  for(var s = 0; s < data.length; s++) {    if (data[s]['profileid']=='Family-friendly frights'){
-                      var ffr = document.createElement("div");
-                      ffr.innerHTML = 
-                      "<div class='row'> \
-                        <div style='box-sizing:border-box;'> \
-                          <div class='large-3 columns' style='padding-top:10px;'> \
-                            "+ ( data[s]['url'] !== "" ? "<img src='uploads/"+data[s]['url']+"'>" : "<img src='uploads/ffr.jpg'>" )+ "\
-                          </div> \
-                          <div class='large-9 columns'> \
-                            <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
-                            "+ ( data[s]['city'] !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+data[s]['city']+"</h4>" : "" )+ "\
-                            <p>"+data[s]['desc']+"</p> \
-                            "+ ( data[s]['address'] !== "" ?  "<p><b>Phone:</b> "+data[s]['address']+"</p>" : "" )+ "\
-                            <p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
-                          </div> \
-                        </div> \
-                      </div> \
-                      <div style='background-color:#ececec; padding:10px;'></div>";
-                      document.getElementById("ffr").appendChild(ffr)
-                    } else if (data[s]['profileid']=='Serious scares'){
-                      var ss = document.createElement("div");
-                      ss.innerHTML = 
-                      "<div class='row'> \
-                        <div style='box-sizing:border-box;'> \
-                          <div class='large-3 columns' style='padding-top:10px;'> \
-                            "+ ( data[s]['url'] !== "" ? "<img src='uploads/"+data[s]['url']+"'>" : "<img src='uploads/ss.jpg'>" )+ "\
-                          </div> \
-                          <div class='large-9 columns'> \
-                            <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
-                            "+ ( data[s]['city'] !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+data[s]['city']+"</h4>" : "" )+ "\
-                            <p>"+data[s]['desc']+"</p> \
-                            "+ ( data[s]['address'] !== "" ?  "<p><b>Phone:</b> "+data[s]['address']+"</p>" : "" )+ "\
-                            <p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
-                          </div> \
-                        </div> \
-                      </div> \
-                      <div style='background-color:#ececec; padding:10px;'></div>";
-                      document.getElementById("ss").appendChild(ss)
-                    } else if (data[s]['profileid']=='Nonfiction fear'){
-                      var nfr = document.createElement("div");
-                      nfr.innerHTML = 
-                      "<div class='row'> \
-                        <div style='box-sizing:border-box;'> \
-                          <div class='large-3 columns' style='padding-top:10px;'> \
-                            "+ ( data[s]['url'] !== "" ? "<img src='uploads/"+data[s]['url']+"'>" : "<img src='uploads/nfr.jpg'>" )+ "\
-                          </div> \
-                          <div class='large-9 columns'> \
-                            <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
-                            "+ ( data[s]['city'] !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+data[s]['city']+"</h4>" : "" )+ "\
-                            <p>"+data[s]['desc']+"</p> \
-                            "+ ( data[s]['address'] !== "" ?  "<p><b>Phone:</b> "+data[s]['address']+"</p>" : "" )+ "\
-                            <p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
-                          </div> \
-                        </div> \
-                      </div> \
-                      <div style='background-color:#ececec; padding:10px;'></div>";
-                      document.getElementById("nfr").appendChild(nfr)
-                    } else if (data[s]['profileid']=='Screams on stage and screen'){
-                      var sosas = document.createElement("div");
-                      sosas.innerHTML = 
-                      "<div class='row'> \
-                        <div style='box-sizing:border-box;'> \
-                          <div class='large-3 columns' style='padding-top:10px;'> \
-                            "+ ( data[s]['url'] !== "" ? "<img src='uploads/"+data[s]['url']+"'>" : "<img src='uploads/sosas.jpg'>" )+ "\
-                          </div> \
-                          <div class='large-9 columns'> \
-                            <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
-                            "+ ( data[s]['city'] !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+data[s]['city']+"</h4>" : "" )+ "\
-                            <p>"+data[s]['desc']+"</p> \
-                            "+ ( data[s]['address'] !== "" ?  "<p><b>Phone:</b> "+data[s]['address']+"</p>" : "" )+ "\
-                            <p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
-                          </div> \
-                        </div> \
-                      </div> \
-                      <div style='background-color:#ececec; padding:10px;'></div>";
-                      document.getElementById("sosas").appendChild(sosas)
-                    } 
-                  };
               })
+
+            console.log(myItems);
+
+
+              $('#keywords').change(function(){ 
+                 var eventindex = $(this).val();
+                 
+
+                 $('#events').empty();
+                 for (var i=0, f=myItems.length; i<f;i++){
+                     if (eventindex.indexOf(myItems[i].profileid) > -1){
+                         console.log(myItems[i].Name);
+                         $('#events').append("<div class='row'><div style='box-sizing:border-box;'><div class='large-3 columns' style='padding-top:10px;'>"+ ( myItems[s].url !== "" ? "<img src='uploads/"+myItems[s].url+"'>" : "<img src='uploads/ffr.jpg'>" )+ "</div><div class='large-9 columns'><h2 style='margin: 0rem'>"+myItems[s].Name+"</h2>"+ ( myItems[s].city !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+myItems[s].city+"</h4>" : "" )+ "<p>"+myItems[s].desc+"</p>"+ ( myItems[s].address !== "" ?  "<p><b>Phone:</b> "+myItems[s].address+"</p>" : "" )+ "<p><a href='"+myItems[s].bizurl+"'>"+myItems[s].bizurl+"</a></p></div></div></div>");
+                     }
+                 }
+              });
 
         </script>
     </div>
