@@ -204,8 +204,8 @@
                      $('#events').empty();
                      for (var i=0, f=myItems.length; i<f;i++){
                          if (eventindex.indexOf(myItems[i].profileid) > -1){
-                             console.log(myItems[i].name);
-                             $('#events').append("<div class='row'><div style='box-sizing:border-box;'><div class='large-3 columns' style='padding-top:10px;'>"+ ( myItems[s].url !== "" ? "<img src='uploads/"+myItems[s].url+"'>" : "<img src='uploads/ffr.jpg'>" )+ "</div><div class='large-9 columns'><h2 style='margin: 0rem'>"+myItems[s].name+"</h2>"+ ( myItems[s].city !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+myItems[s].city+"</h4>" : "" )+ "<p>"+myItems[s].desc+"</p>"+ ( myItems[s].address !== "" ?  "<p><b>Phone:</b> "+myItems[s].address+"</p>" : "" )+ "<p><a href='"+myItems[s].bizurl+"'>"+myItems[s].bizurl+"</a></p></div></div></div>");
+                             console.log(myItems[i].url);
+                             $('#events').append("<div class='row'><div style='box-sizing:border-box;'><div class='large-3 columns' style='padding-top:10px;'>"+ ( myItems[s].url !== "" ? "<img src='uploads/"+myItems[s].url+"'>" : "<img src='uploads/ffr.jpg'>" )+ "</div><div class='large-9 columns'><h2 style='margin: 0rem'>"+myItems[s].name+"</h2>"+ ( myItems[s].city !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+myItems[s].city+"</h4>" : "" )+ "<p>"+myItems[s].desc+"</p>"+ ( myItems[s].address !== "" ?  "<p><b>Phone:</b> "+myItems[s].address+"</p>" : "" )+ "<p><a href='"+myItems[s].bizurl+"'>"+myItems[s].bizurl+"</a></p></div></div></div><div style='background-color:#ececec; padding:10px;'></div>");
                          }
                      }
                   });
@@ -296,7 +296,26 @@
                       </div> \
                       <div style='background-color:#ececec; padding:10px;'></div>";
                       document.getElementById("sosas").appendChild(sosas)
-                    } 
+                    } else if (data[s]['profileid']=='Adults-only costume parties'){
+                      var acp = document.createElement("div");
+                      acp.innerHTML = 
+                      "<div class='row'> \
+                        <div style='box-sizing:border-box;'> \
+                          <div class='large-3 columns' style='padding-top:10px;'> \
+                            "+ ( data[s]['url'] !== "" ? "<img src='uploads/"+data[s]['url']+"'>" : "<img src='uploads/acp.jpg'>" )+ "\
+                          </div> \
+                          <div class='large-9 columns'> \
+                            <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
+                            "+ ( data[s]['city'] !== "" ? "<h4 style='margin-top:0.5rem'>Go: "+data[s]['city']+"</h4>" : "" )+ "\
+                            <p>"+data[s]['desc']+"</p> \
+                            "+ ( data[s]['address'] !== "" ?  "<p><b>Phone:</b> "+data[s]['address']+"</p>" : "" )+ "\
+                            <p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
+                          </div> \
+                        </div> \
+                      </div> \
+                      <div style='background-color:#ececec; padding:10px;'></div>";
+                      document.getElementById("acp").appendChild(acp)
+                    }
                   };
               })
 
