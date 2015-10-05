@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="http://data.lohud.com/features/halloween15/uploads/ss.jpg" />
     <link rel="shortcut icon" href="http://www.gannett-cdn.com/sites/lohud/images/favicon.png">
-    <title>Halloween</title>
+    <title>Halloween Guide | lohud.com</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/vendor/modernizr.js"></script>
     <script src="js/vendor/jquery.js"></script>
-    <!--  <script src="js/leaflet-providers.js"></script>
-    <script src="js/leaflet-hash.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
     <?php
       include('chartbeat.php')
     ?>
