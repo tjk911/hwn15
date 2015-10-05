@@ -1,0 +1,178 @@
+<?php
+  include('header.php')
+?>
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <h2 style="margin-bottom:0.25rem;">Fall Dining Guide</h2>
+        <p style="margin-bottom:0.25rem; margin-top:0.25rem;">From unimpeachable classics to buzzy newcomers courting the food-world cognoscenti, this is the lohud fall dining guide</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr style="border:2px solid; margin:0.5rem 0 0.5rem 0;">
+          <img src="http://placehold.it/100x50">
+          <img src="http://placehold.it/100x50">
+          <img src="http://placehold.it/100x50">
+        <hr style="border:1x solid; margin:0.5rem 0 0.5rem 0;">  
+      </div>
+    </div>
+    
+    <div class="row">
+        <div class="large-8 columns" style="background-clip: content-box; background-color: #fff;" id="main">
+          <button id="bt1">View Portfolio</button>
+          <button id="bt2">View Results</button>
+          <button id="bt3">View Results</button>
+          <script type="text/javascript">
+
+              $.getJSON('entries.json', function(data){
+                    myItems = data;
+                    // console.log(data);
+                    // var news = document.getElementsByClassName("news")[0];
+                    for(var s = 0; s < data.length; s++) {
+
+                      if (data[s]['profileid']=='Family-friendly frights'){
+                        var ffr = document.createElement("div");
+                        ffr.setAttribute("id", "ffr");
+                        ffr.innerHTML = 
+                        "<div class='row'> \
+                          <div style='padding:20px; box-sizing:border-box;'> \
+                            <div class='large-4 columns'> \
+                              <img src='"+data[s]['url']+"'> \
+                            </div> \
+                            <div class='large-8 columns'> \
+                              <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
+                              "+ ( data[s]['city'] !== "" ? "<h4>Dates: "+data[s]['city']+"</h4>" : "" )+ "\
+                              <p>"+data[s]['desc']+"</p> \
+                              <p><b>Go:</b> "+data[s]['address']+"</p><p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
+                            </div> \
+                          </div> \
+                        </div> \
+                        <div style='background-color:#ececec; padding:20px;'></div>";
+                        document.getElementById("main").appendChild(ffr)
+                      } else if (data[s]['profileid']=='Serious scares'){
+                        var ss = document.createElement("div");
+                        ss.setAttribute("id", "ss");
+                        ss.style.cssText ='display:none';
+                        ss.innerHTML = 
+                        "<div class='row'> \
+                          <div style='padding:20px; box-sizing:border-box;'> \
+                            <div class='large-4 columns'> \
+                              <img src='"+data[s]['url']+"'> \
+                            </div> \
+                            <div class='large-8 columns'> \
+                              <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
+                              "+ ( data[s]['city'] !== "" ? "<h4>Dates: "+data[s]['city']+"</h4>" : "" )+ "\
+                              <p>"+data[s]['desc']+"</p> \
+                              <p><b>Go:</b> "+data[s]['address']+"</p><p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
+                            </div> \
+                          </div> \
+                        </div> \
+                        <div style='background-color:#ececec; padding:20px;'></div>";
+                        document.getElementById("main").appendChild(ss)
+                      } else if (data[s]['profileid']=='Nonfiction fear'){
+                        var nfr = document.createElement("div");
+                        nfr.setAttribute("id", "nfr");
+                        nfr.style.cssText ='display:none';
+                        nfr.innerHTML = 
+                        "<div class='row'> \
+                          <div style='padding:20px; box-sizing:border-box;'> \
+                            <div class='large-4 columns'> \
+                              <img src='"+data[s]['url']+"'> \
+                            </div> \
+                            <div class='large-8 columns'> \
+                              <h2 style='margin: 0rem'>"+data[s]['name']+"</h2> \
+                              "+ ( data[s]['city'] !== "" ? "<h4>Dates: "+data[s]['city']+"</h4>" : "" )+ "\
+                              <p>"+data[s]['desc']+"</p> \
+                              <p><b>Go:</b> "+data[s]['address']+"</p><p><a href='"+data[s]['bizurl']+"'>"+data[s]['bizurl']+"</a></p> \
+                            </div> \
+                          </div> \
+                        </div> \
+                        <div style='background-color:#ececec; padding:20px;'></div>";
+                        document.getElementById("main").appendChild(nfr)
+                      }
+                    };
+                })
+
+            function swap(ffr, ss, nfr) {
+                document.getElementById(ffr).style.display = 'block';
+                document.getElementById(ss).style.display = 'none';
+                document.getElementById(nfr).style.display = 'none';
+            }
+            document.getElementById('bt1').addEventListener('click',function(e){
+                swap('ffr','ss', 'nfr');
+            });
+            document.getElementById('bt2').addEventListener('click',function(e){
+                swap('ss','ffr', 'nfr');
+            });
+            document.getElementById('bt3').addEventListener('click',function(e){
+                swap('nfr','ffr', 'ss');
+            });
+
+            // function reqListener2(e) {
+            //   searchData = JSON.parse(this.responseText);
+            //   var stories = searchData;
+            //   console.log(stories);
+            //   var maindiv = document.createElement("div");
+            //   maindiv.style.cssText = "padding:20px;";
+            //   maindiv.id = "feed"
+            //   maindiv.innerHTML = "<h5 style='margin: 5px;'>YOU MIGHT ALSO LIKE</h5>";
+            //   document.getElementById("linkmore").appendChild(maindiv);
+            //   for(var s = 0; s < stories.length; s++) {
+            //       var head = document.createElement("div");
+            //       head.innerHTML = "<p style='margin:5px;'><a href='" +stories[s].urls.mobileUrl + "'>" + stories[s].headline + "</a></p><hr style='margin-top:10px; border-color:#e3e3e3;'>";
+            //       document.getElementById("feed").appendChild(head);
+            //   }
+            // }
+
+
+
+
+          </script>
+
+          <div style="background-image:url('http://placecage.com/800/400');background-size:cover; height:400px;">
+            
+          </div>
+
+          <div style="padding:20px; box-sizing:border-box;">
+            <p>Where are you eating tonight? With hot new venues opening each week, it’s tough to keep track of the best restaurants in NYC—the impeccable landmarks that never disappoint, the divey honky tonks serving life-changing brisket, and the sexy upstarts everyone who’s anyone is clamoring to try. Whether you’re craving an artful tasting menu, a soul-satisfying platter of crackling fried chicken or simply a great bloody steak, there’s a New York restaurant that will satisfy. Here are the best of them: The 100 places that Time Out New York’s food editors can’t do without. Did we miss your favorite New York restaurant? Join the conversation in the comments.</p>
+
+            <p>RECOMMENDED: See all of the best restaurants in NYC</p>
+          </div>
+          <div style="background-color:#ececec; padding:20px;"></div>
+        </div>
+        <div class="large-4 columns" style="background-clip: content-box; background-color: #fff;" id="linkmore">
+            <script type="text/javascript">
+
+                  var feed = "http://api.usatoday.com/Syndication/v5/assets/ssts/life?apiKey=3uyzxzptg5hq4mmgbh5m9eqf&sc=PWES&format=json&count=10";
+                  console.log(feed);
+                  var searchData
+                  var pullSearch = new XMLHttpRequest();
+                  pullSearch.onload = reqListener2;
+                  pullSearch.open("get", feed, true);
+                  pullSearch.send();
+                  function reqListener2(e) {
+                    searchData = JSON.parse(this.responseText);
+                    var stories = searchData;
+                    console.log(stories);
+                    var maindiv = document.createElement("div");
+                    maindiv.style.cssText = "padding:20px;";
+                    maindiv.id = "feed"
+                    maindiv.innerHTML = "<h5 style='margin: 5px;'>YOU MIGHT ALSO LIKE</h5>";
+                    document.getElementById("linkmore").appendChild(maindiv);
+                    for(var s = 0; s < stories.length; s++) {
+                        var head = document.createElement("div");
+                        head.innerHTML = "<p style='margin:5px;'><a href='" +stories[s].urls.mobileUrl + "'>" + stories[s].headline + "</a></p><hr style='margin-top:10px; border-color:#e3e3e3;'>";
+                        document.getElementById("feed").appendChild(head);
+                    }
+                  }
+
+            </script>
+        </div>
+    </div>
+
+
+<?php
+  include('footer.php')
+?>

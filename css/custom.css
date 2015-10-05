@@ -1,0 +1,105 @@
+.row .row {
+	max-width: 80vw;
+  margin: 0 !important;
+}
+body {
+  font-size: 1.1875rem;
+  line-height: 1.6875rem;
+  margin: 0 auto;
+  background-color: #ececec;
+}
+h1 {
+  font-size: 5rem;
+  line-height: 5.0625rem;
+  margin-top: 3.375rem;
+  margin-bottom: 1.6875rem;
+}
+h2 {
+  /*font-size: 3.125rem;*/
+  font-size: 2rem;
+  line-height: 3.375rem;
+  margin-top: 3.375rem;
+  margin-bottom: 1.6875rem;
+}
+h3 {
+  font-size: 1.9375rem;
+  line-height: 3.375rem;
+  margin-top: 1.6875rem;
+  margin-bottom: 1.6875rem;
+}
+h4 {
+  font-size: 1.1875rem;
+  line-height: 1.6875rem;
+  margin-top: 1.6875rem;
+  margin-bottom: 1.6875rem;
+}
+p, ul, ol, pre, table, blockquote {
+  /*margin-top: 1.6875rem;*/
+  /*margin-bottom: 1.6875rem;*/
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+/* Sanitation */
+hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+b, strong, em, small, code {
+  line-height: 1;
+}
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub {
+  top: 0.4em;
+}
+
+@media only screen and (max-width: 40em) {
+  .row {
+    max-width: 100vw;
+  }
+
+  h2 {
+    line-height: 2.5rem;
+  }
+}
+
+.container > div {
+    display:none;
+}
+.container > div:first-child {
+    display:block;
+}
+
+.menu > li {
+    display:inline-block;
+    font-weight:bold;
+    /*padding:6px 10px;*/
+    cursor:pointer;
+    /*border:2px solid tomato;*/
+    margin:5px;
+}
+
+#map {
+  height:600px;
+}
+
+.button {
+  background-color: #EF8500;
+  border-color: #DF4E39;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+  background-color: #DF4E39; }
+
+
+button.small, .button.small {
+    font-size: 0.9rem;
+}
